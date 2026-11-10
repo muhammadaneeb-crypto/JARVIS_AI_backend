@@ -1,0 +1,907 @@
+{
+    "openapi":  "3.1.0",
+    "info":  {
+                 "title":  "JARVIS_AI Backend",
+                 "version":  "0.1.0-phase1"
+             },
+    "paths":  {
+                  "/health":  {
+                                  "get":  {
+                                              "summary":  "Health",
+                                              "description":  "Public endpoint. Reports which optional features have API keys configured.",
+                                              "operationId":  "health_health_get",
+                                              "responses":  {
+                                                                "200":  {
+                                                                            "description":  "Successful Response",
+                                                                            "content":  {
+                                                                                            "application/json":  {
+                                                                                                                     "schema":  {
+                                                                                                                                    "additionalProperties":  true,
+                                                                                                                                    "type":  "object",
+                                                                                                                                    "title":  "Response Health Health Get"
+                                                                                                                                }
+                                                                                                                 }
+                                                                                        }
+                                                                        }
+                                                            }
+                                          }
+                              },
+                  "/windows/system-info":  {
+                                               "get":  {
+                                                           "summary":  "System Info",
+                                                           "operationId":  "system_info_windows_system_info_get",
+                                                           "responses":  {
+                                                                             "200":  {
+                                                                                         "description":  "Successful Response",
+                                                                                         "content":  {
+                                                                                                         "application/json":  {
+                                                                                                                                  "schema":  {
+                                                                                                                                                 "additionalProperties":  true,
+                                                                                                                                                 "type":  "object",
+                                                                                                                                                 "title":  "Response System Info Windows System Info Get"
+                                                                                                                                             }
+                                                                                                                              }
+                                                                                                     }
+                                                                                     }
+                                                                         },
+                                                           "security":  [
+                                                                            {
+                                                                                "Bearer Authentication":  [
+
+                                                                                                          ]
+                                                                            }
+                                                                        ]
+                                                       }
+                                           },
+                  "/auth/signup":  {
+                                       "post":  {
+                                                    "summary":  "Signup",
+                                                    "operationId":  "signup_auth_signup_post",
+                                                    "requestBody":  {
+                                                                        "content":  {
+                                                                                        "application/json":  {
+                                                                                                                 "schema":  {
+                                                                                                                                "$ref":  "#/components/schemas/SignupRequest"
+                                                                                                                            }
+                                                                                                             }
+                                                                                    },
+                                                                        "required":  true
+                                                                    },
+                                                    "responses":  {
+                                                                      "200":  {
+                                                                                  "description":  "Successful Response",
+                                                                                  "content":  {
+                                                                                                  "application/json":  {
+                                                                                                                           "schema":  {
+                                                                                                                                          "additionalProperties":  true,
+                                                                                                                                          "type":  "object",
+                                                                                                                                          "title":  "Response Signup Auth Signup Post"
+                                                                                                                                      }
+                                                                                                                       }
+                                                                                              }
+                                                                              },
+                                                                      "422":  {
+                                                                                  "description":  "Validation Error",
+                                                                                  "content":  {
+                                                                                                  "application/json":  {
+                                                                                                                           "schema":  {
+                                                                                                                                          "$ref":  "#/components/schemas/HTTPValidationError"
+                                                                                                                                      }
+                                                                                                                       }
+                                                                                              }
+                                                                              }
+                                                                  },
+                                                    "security":  [
+                                                                     {
+                                                                         "Bearer Authentication":  [
+
+                                                                                                   ]
+                                                                     }
+                                                                 ]
+                                                }
+                                   },
+                  "/auth/login":  {
+                                      "post":  {
+                                                   "summary":  "Login",
+                                                   "operationId":  "login_auth_login_post",
+                                                   "requestBody":  {
+                                                                       "content":  {
+                                                                                       "application/json":  {
+                                                                                                                "schema":  {
+                                                                                                                               "$ref":  "#/components/schemas/LoginRequest"
+                                                                                                                           }
+                                                                                                            }
+                                                                                   },
+                                                                       "required":  true
+                                                                   },
+                                                   "responses":  {
+                                                                     "200":  {
+                                                                                 "description":  "Successful Response",
+                                                                                 "content":  {
+                                                                                                 "application/json":  {
+                                                                                                                          "schema":  {
+                                                                                                                                         "additionalProperties":  true,
+                                                                                                                                         "type":  "object",
+                                                                                                                                         "title":  "Response Login Auth Login Post"
+                                                                                                                                     }
+                                                                                                                      }
+                                                                                             }
+                                                                             },
+                                                                     "422":  {
+                                                                                 "description":  "Validation Error",
+                                                                                 "content":  {
+                                                                                                 "application/json":  {
+                                                                                                                          "schema":  {
+                                                                                                                                         "$ref":  "#/components/schemas/HTTPValidationError"
+                                                                                                                                     }
+                                                                                                                      }
+                                                                                             }
+                                                                             }
+                                                                 },
+                                                   "security":  [
+                                                                    {
+                                                                        "Bearer Authentication":  [
+
+                                                                                                  ]
+                                                                    }
+                                                                ]
+                                               }
+                                  },
+                  "/auth/logout":  {
+                                       "post":  {
+                                                    "summary":  "Logout",
+                                                    "operationId":  "logout_auth_logout_post",
+                                                    "responses":  {
+                                                                      "200":  {
+                                                                                  "description":  "Successful Response",
+                                                                                  "content":  {
+                                                                                                  "application/json":  {
+                                                                                                                           "schema":  {
+                                                                                                                                          "additionalProperties":  true,
+                                                                                                                                          "type":  "object",
+                                                                                                                                          "title":  "Response Logout Auth Logout Post"
+                                                                                                                                      }
+                                                                                                                       }
+                                                                                              }
+                                                                              }
+                                                                  },
+                                                    "security":  [
+                                                                     {
+                                                                         "Bearer Authentication":  [
+
+                                                                                                   ]
+                                                                     }
+                                                                 ]
+                                                }
+                                   },
+                  "/auth/me":  {
+                                   "get":  {
+                                               "summary":  "Me",
+                                               "operationId":  "me_auth_me_get",
+                                               "responses":  {
+                                                                 "200":  {
+                                                                             "description":  "Successful Response",
+                                                                             "content":  {
+                                                                                             "application/json":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "additionalProperties":  true,
+                                                                                                                                     "type":  "object",
+                                                                                                                                     "title":  "Response Me Auth Me Get"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                         }
+                                                                         }
+                                                             },
+                                               "security":  [
+                                                                {
+                                                                    "Bearer Authentication":  [
+
+                                                                                              ]
+                                                                }
+                                                            ]
+                                           }
+                               },
+                  "/history":  {
+                                   "get":  {
+                                               "summary":  "List History",
+                                               "operationId":  "list_history_history_get",
+                                               "security":  [
+                                                                {
+                                                                    "Bearer Authentication":  [
+
+                                                                                              ]
+                                                                }
+                                                            ],
+                                               "parameters":  [
+                                                                  {
+                                                                      "name":  "limit",
+                                                                      "in":  "query",
+                                                                      "required":  false,
+                                                                      "schema":  {
+                                                                                     "type":  "integer",
+                                                                                     "maximum":  200,
+                                                                                     "minimum":  1,
+                                                                                     "default":  50,
+                                                                                     "title":  "Limit"
+                                                                                 }
+                                                                  }
+                                                              ],
+                                               "responses":  {
+                                                                 "200":  {
+                                                                             "description":  "Successful Response",
+                                                                             "content":  {
+                                                                                             "application/json":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "type":  "object",
+                                                                                                                                     "additionalProperties":  true,
+                                                                                                                                     "title":  "Response List History History Get"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                         }
+                                                                         },
+                                                                 "422":  {
+                                                                             "description":  "Validation Error",
+                                                                             "content":  {
+                                                                                             "application/json":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "$ref":  "#/components/schemas/HTTPValidationError"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                         }
+                                                                         }
+                                                             }
+                                           },
+                                   "post":  {
+                                                "summary":  "Add History",
+                                                "operationId":  "add_history_history_post",
+                                                "security":  [
+                                                                 {
+                                                                     "Bearer Authentication":  [
+
+                                                                                               ]
+                                                                 }
+                                                             ],
+                                                "requestBody":  {
+                                                                    "required":  true,
+                                                                    "content":  {
+                                                                                    "application/json":  {
+                                                                                                             "schema":  {
+                                                                                                                            "$ref":  "#/components/schemas/HistoryItem"
+                                                                                                                        }
+                                                                                                         }
+                                                                                }
+                                                                },
+                                                "responses":  {
+                                                                  "201":  {
+                                                                              "description":  "Successful Response",
+                                                                              "content":  {
+                                                                                              "application/json":  {
+                                                                                                                       "schema":  {
+                                                                                                                                      "type":  "object",
+                                                                                                                                      "additionalProperties":  true,
+                                                                                                                                      "title":  "Response Add History History Post"
+                                                                                                                                  }
+                                                                                                                   }
+                                                                                          }
+                                                                          },
+                                                                  "422":  {
+                                                                              "description":  "Validation Error",
+                                                                              "content":  {
+                                                                                              "application/json":  {
+                                                                                                                       "schema":  {
+                                                                                                                                      "$ref":  "#/components/schemas/HTTPValidationError"
+                                                                                                                                  }
+                                                                                                                   }
+                                                                                          }
+                                                                          }
+                                                              }
+                                            }
+                               },
+                  "/ai/chat":  {
+                                   "post":  {
+                                                "summary":  "Handler",
+                                                "operationId":  "handler_ai_chat_post",
+                                                "responses":  {
+                                                                  "200":  {
+                                                                              "description":  "Successful Response",
+                                                                              "content":  {
+                                                                                              "application/json":  {
+                                                                                                                       "schema":  {
+
+                                                                                                                                  }
+                                                                                                                   }
+                                                                                          }
+                                                                          }
+                                                              },
+                                                "security":  [
+                                                                 {
+                                                                     "Bearer Authentication":  [
+
+                                                                                               ]
+                                                                 }
+                                                             ]
+                                            }
+                               },
+                  "/ai/voice/transcribe":  {
+                                               "post":  {
+                                                            "summary":  "Handler",
+                                                            "operationId":  "handler_ai_voice_transcribe_post",
+                                                            "responses":  {
+                                                                              "200":  {
+                                                                                          "description":  "Successful Response",
+                                                                                          "content":  {
+                                                                                                          "application/json":  {
+                                                                                                                                   "schema":  {
+
+                                                                                                                                              }
+                                                                                                                               }
+                                                                                                      }
+                                                                                      }
+                                                                          },
+                                                            "security":  [
+                                                                             {
+                                                                                 "Bearer Authentication":  [
+
+                                                                                                           ]
+                                                                             }
+                                                                         ]
+                                                        }
+                                           },
+                  "/ai/voice/speak":  {
+                                          "post":  {
+                                                       "summary":  "Handler",
+                                                       "operationId":  "handler_ai_voice_speak_post",
+                                                       "responses":  {
+                                                                         "200":  {
+                                                                                     "description":  "Successful Response",
+                                                                                     "content":  {
+                                                                                                     "application/json":  {
+                                                                                                                              "schema":  {
+
+                                                                                                                                         }
+                                                                                                                          }
+                                                                                                 }
+                                                                                 }
+                                                                     },
+                                                       "security":  [
+                                                                        {
+                                                                            "Bearer Authentication":  [
+
+                                                                                                      ]
+                                                                        }
+                                                                    ]
+                                                   }
+                                      },
+                  "/agent/execute":  {
+                                         "post":  {
+                                                      "summary":  "Handler",
+                                                      "operationId":  "handler_agent_execute_post",
+                                                      "responses":  {
+                                                                        "200":  {
+                                                                                    "description":  "Successful Response",
+                                                                                    "content":  {
+                                                                                                    "application/json":  {
+                                                                                                                             "schema":  {
+
+                                                                                                                                        }
+                                                                                                                         }
+                                                                                                }
+                                                                                }
+                                                                    },
+                                                      "security":  [
+                                                                       {
+                                                                           "Bearer Authentication":  [
+
+                                                                                                     ]
+                                                                       }
+                                                                   ]
+                                                  }
+                                     },
+                  "/agent/plan":  {
+                                      "post":  {
+                                                   "summary":  "Handler",
+                                                   "operationId":  "handler_agent_plan_post",
+                                                   "responses":  {
+                                                                     "200":  {
+                                                                                 "description":  "Successful Response",
+                                                                                 "content":  {
+                                                                                                 "application/json":  {
+                                                                                                                          "schema":  {
+
+                                                                                                                                     }
+                                                                                                                      }
+                                                                                             }
+                                                                             }
+                                                                 },
+                                                   "security":  [
+                                                                    {
+                                                                        "Bearer Authentication":  [
+
+                                                                                                  ]
+                                                                    }
+                                                                ]
+                                               }
+                                  },
+                  "/agent/web-search":  {
+                                            "post":  {
+                                                         "summary":  "Handler",
+                                                         "operationId":  "handler_agent_web_search_post",
+                                                         "responses":  {
+                                                                           "200":  {
+                                                                                       "description":  "Successful Response",
+                                                                                       "content":  {
+                                                                                                       "application/json":  {
+                                                                                                                                "schema":  {
+
+                                                                                                                                           }
+                                                                                                                            }
+                                                                                                   }
+                                                                                   }
+                                                                       },
+                                                         "security":  [
+                                                                          {
+                                                                              "Bearer Authentication":  [
+
+                                                                                                        ]
+                                                                          }
+                                                                      ]
+                                                     }
+                                        },
+                  "/windows/open-app":  {
+                                            "post":  {
+                                                         "summary":  "Handler",
+                                                         "operationId":  "handler_windows_open_app_post",
+                                                         "responses":  {
+                                                                           "200":  {
+                                                                                       "description":  "Successful Response",
+                                                                                       "content":  {
+                                                                                                       "application/json":  {
+                                                                                                                                "schema":  {
+
+                                                                                                                                           }
+                                                                                                                            }
+                                                                                                   }
+                                                                                   }
+                                                                       },
+                                                         "security":  [
+                                                                          {
+                                                                              "Bearer Authentication":  [
+
+                                                                                                        ]
+                                                                          }
+                                                                      ]
+                                                     }
+                                        },
+                  "/windows/close-app":  {
+                                             "post":  {
+                                                          "summary":  "Handler",
+                                                          "operationId":  "handler_windows_close_app_post",
+                                                          "responses":  {
+                                                                            "200":  {
+                                                                                        "description":  "Successful Response",
+                                                                                        "content":  {
+                                                                                                        "application/json":  {
+                                                                                                                                 "schema":  {
+
+                                                                                                                                            }
+                                                                                                                             }
+                                                                                                    }
+                                                                                    }
+                                                                        },
+                                                          "security":  [
+                                                                           {
+                                                                               "Bearer Authentication":  [
+
+                                                                                                         ]
+                                                                           }
+                                                                       ]
+                                                      }
+                                         },
+                  "/windows/open-folder":  {
+                                               "post":  {
+                                                            "summary":  "Handler",
+                                                            "operationId":  "handler_windows_open_folder_post",
+                                                            "responses":  {
+                                                                              "200":  {
+                                                                                          "description":  "Successful Response",
+                                                                                          "content":  {
+                                                                                                          "application/json":  {
+                                                                                                                                   "schema":  {
+
+                                                                                                                                              }
+                                                                                                                               }
+                                                                                                      }
+                                                                                      }
+                                                                          },
+                                                            "security":  [
+                                                                             {
+                                                                                 "Bearer Authentication":  [
+
+                                                                                                           ]
+                                                                             }
+                                                                         ]
+                                                        }
+                                           },
+                  "/windows/search-files":  {
+                                                "post":  {
+                                                             "summary":  "Handler",
+                                                             "operationId":  "handler_windows_search_files_post",
+                                                             "responses":  {
+                                                                               "200":  {
+                                                                                           "description":  "Successful Response",
+                                                                                           "content":  {
+                                                                                                           "application/json":  {
+                                                                                                                                    "schema":  {
+
+                                                                                                                                               }
+                                                                                                                                }
+                                                                                                       }
+                                                                                       }
+                                                                           },
+                                                             "security":  [
+                                                                              {
+                                                                                  "Bearer Authentication":  [
+
+                                                                                                            ]
+                                                                              }
+                                                                          ]
+                                                         }
+                                            },
+                  "/files/read":  {
+                                      "post":  {
+                                                   "summary":  "Handler",
+                                                   "operationId":  "handler_files_read_post",
+                                                   "responses":  {
+                                                                     "200":  {
+                                                                                 "description":  "Successful Response",
+                                                                                 "content":  {
+                                                                                                 "application/json":  {
+                                                                                                                          "schema":  {
+
+                                                                                                                                     }
+                                                                                                                      }
+                                                                                             }
+                                                                             }
+                                                                 },
+                                                   "security":  [
+                                                                    {
+                                                                        "Bearer Authentication":  [
+
+                                                                                                  ]
+                                                                    }
+                                                                ]
+                                               }
+                                  },
+                  "/files/upload":  {
+                                        "post":  {
+                                                     "summary":  "Handler",
+                                                     "operationId":  "handler_files_upload_post",
+                                                     "responses":  {
+                                                                       "200":  {
+                                                                                   "description":  "Successful Response",
+                                                                                   "content":  {
+                                                                                                   "application/json":  {
+                                                                                                                            "schema":  {
+
+                                                                                                                                       }
+                                                                                                                        }
+                                                                                               }
+                                                                               }
+                                                                   },
+                                                     "security":  [
+                                                                      {
+                                                                          "Bearer Authentication":  [
+
+                                                                                                    ]
+                                                                      }
+                                                                  ]
+                                                 }
+                                    },
+                  "/files/generate/pdf":  {
+                                              "post":  {
+                                                           "summary":  "Handler",
+                                                           "operationId":  "handler_files_generate_pdf_post",
+                                                           "responses":  {
+                                                                             "200":  {
+                                                                                         "description":  "Successful Response",
+                                                                                         "content":  {
+                                                                                                         "application/json":  {
+                                                                                                                                  "schema":  {
+
+                                                                                                                                             }
+                                                                                                                              }
+                                                                                                     }
+                                                                                     }
+                                                                         },
+                                                           "security":  [
+                                                                            {
+                                                                                "Bearer Authentication":  [
+
+                                                                                                          ]
+                                                                            }
+                                                                        ]
+                                                       }
+                                          },
+                  "/files/generate/docx":  {
+                                               "post":  {
+                                                            "summary":  "Handler",
+                                                            "operationId":  "handler_files_generate_docx_post",
+                                                            "responses":  {
+                                                                              "200":  {
+                                                                                          "description":  "Successful Response",
+                                                                                          "content":  {
+                                                                                                          "application/json":  {
+                                                                                                                                   "schema":  {
+
+                                                                                                                                              }
+                                                                                                                               }
+                                                                                                      }
+                                                                                      }
+                                                                          },
+                                                            "security":  [
+                                                                             {
+                                                                                 "Bearer Authentication":  [
+
+                                                                                                           ]
+                                                                             }
+                                                                         ]
+                                                        }
+                                           },
+                  "/files/generate/xlsx":  {
+                                               "post":  {
+                                                            "summary":  "Handler",
+                                                            "operationId":  "handler_files_generate_xlsx_post",
+                                                            "responses":  {
+                                                                              "200":  {
+                                                                                          "description":  "Successful Response",
+                                                                                          "content":  {
+                                                                                                          "application/json":  {
+                                                                                                                                   "schema":  {
+
+                                                                                                                                              }
+                                                                                                                               }
+                                                                                                      }
+                                                                                      }
+                                                                          },
+                                                            "security":  [
+                                                                             {
+                                                                                 "Bearer Authentication":  [
+
+                                                                                                           ]
+                                                                             }
+                                                                         ]
+                                                        }
+                                           },
+                  "/browser/navigate":  {
+                                            "post":  {
+                                                         "summary":  "Handler",
+                                                         "operationId":  "handler_browser_navigate_post",
+                                                         "responses":  {
+                                                                           "200":  {
+                                                                                       "description":  "Successful Response",
+                                                                                       "content":  {
+                                                                                                       "application/json":  {
+                                                                                                                                "schema":  {
+
+                                                                                                                                           }
+                                                                                                                            }
+                                                                                                   }
+                                                                                   }
+                                                                       },
+                                                         "security":  [
+                                                                          {
+                                                                              "Bearer Authentication":  [
+
+                                                                                                        ]
+                                                                          }
+                                                                      ]
+                                                     }
+                                        },
+                  "/browser/execute":  {
+                                           "post":  {
+                                                        "summary":  "Handler",
+                                                        "operationId":  "handler_browser_execute_post",
+                                                        "responses":  {
+                                                                          "200":  {
+                                                                                      "description":  "Successful Response",
+                                                                                      "content":  {
+                                                                                                      "application/json":  {
+                                                                                                                               "schema":  {
+
+                                                                                                                                          }
+                                                                                                                           }
+                                                                                                  }
+                                                                                  }
+                                                                      },
+                                                        "security":  [
+                                                                         {
+                                                                             "Bearer Authentication":  [
+
+                                                                                                       ]
+                                                                         }
+                                                                     ]
+                                                    }
+                                       }
+              },
+    "components":  {
+                       "schemas":  {
+                                       "ChatMessage":  {
+                                                           "properties":  {
+                                                                              "role":  {
+                                                                                           "type":  "string",
+                                                                                           "enum":  [
+                                                                                                        "user",
+                                                                                                        "assistant"
+                                                                                                    ],
+                                                                                           "title":  "Role"
+                                                                                       },
+                                                                              "content":  {
+                                                                                              "type":  "string",
+                                                                                              "maxLength":  8000,
+                                                                                              "minLength":  1,
+                                                                                              "title":  "Content"
+                                                                                          }
+                                                                          },
+                                                           "type":  "object",
+                                                           "required":  [
+                                                                            "role",
+                                                                            "content"
+                                                                        ],
+                                                           "title":  "ChatMessage"
+                                                       },
+                                       "ChatRequest":  {
+                                                           "properties":  {
+                                                                              "message":  {
+                                                                                              "type":  "string",
+                                                                                              "maxLength":  8000,
+                                                                                              "minLength":  1,
+                                                                                              "title":  "Message"
+                                                                                          },
+                                                                              "history":  {
+                                                                                              "items":  {
+                                                                                                            "$ref":  "#/components/schemas/ChatMessage"
+                                                                                                        },
+                                                                                              "type":  "array",
+                                                                                              "maxItems":  20,
+                                                                                              "title":  "History"
+                                                                                          }
+                                                                          },
+                                                           "type":  "object",
+                                                           "required":  [
+                                                                            "message"
+                                                                        ],
+                                                           "title":  "ChatRequest"
+                                                       },
+                                       "HTTPValidationError":  {
+                                                                   "properties":  {
+                                                                                      "detail":  {
+                                                                                                     "items":  {
+                                                                                                                   "$ref":  "#/components/schemas/ValidationError"
+                                                                                                               },
+                                                                                                     "type":  "array",
+                                                                                                     "title":  "Detail"
+                                                                                                 }
+                                                                                  },
+                                                                   "type":  "object",
+                                                                   "title":  "HTTPValidationError"
+                                                               },
+                                       "HistoryItem":  {
+                                                           "properties":  {
+                                                                              "kind":  {
+                                                                                           "type":  "string",
+                                                                                           "maxLength":  40,
+                                                                                           "minLength":  1,
+                                                                                           "title":  "Kind"
+                                                                                       },
+                                                                              "summary":  {
+                                                                                              "type":  "string",
+                                                                                              "maxLength":  500,
+                                                                                              "minLength":  1,
+                                                                                              "title":  "Summary"
+                                                                                          },
+                                                                              "status":  {
+                                                                                             "type":  "string",
+                                                                                             "pattern":  "^(done|failed|pending)$",
+                                                                                             "title":  "Status",
+                                                                                             "default":  "done"
+                                                                                         }
+                                                                          },
+                                                           "type":  "object",
+                                                           "required":  [
+                                                                            "kind",
+                                                                            "summary"
+                                                                        ],
+                                                           "title":  "HistoryItem"
+                                                       },
+                                       "LoginRequest":  {
+                                                            "properties":  {
+                                                                               "email":  {
+                                                                                             "type":  "string",
+                                                                                             "maxLength":  254,
+                                                                                             "title":  "Email"
+                                                                                         },
+                                                                               "password":  {
+                                                                                                "type":  "string",
+                                                                                                "maxLength":  128,
+                                                                                                "minLength":  1,
+                                                                                                "title":  "Password"
+                                                                                            }
+                                                                           },
+                                                            "type":  "object",
+                                                            "required":  [
+                                                                             "email",
+                                                                             "password"
+                                                                         ],
+                                                            "title":  "LoginRequest"
+                                                        },
+                                       "SignupRequest":  {
+                                                             "properties":  {
+                                                                                "email":  {
+                                                                                              "type":  "string",
+                                                                                              "maxLength":  254,
+                                                                                              "title":  "Email"
+                                                                                          },
+                                                                                "password":  {
+                                                                                                 "type":  "string",
+                                                                                                 "maxLength":  128,
+                                                                                                 "minLength":  8,
+                                                                                                 "title":  "Password"
+                                                                                             }
+                                                                            },
+                                                             "type":  "object",
+                                                             "required":  [
+                                                                              "email",
+                                                                              "password"
+                                                                          ],
+                                                             "title":  "SignupRequest"
+                                                         },
+                                       "ValidationError":  {
+                                                               "properties":  {
+                                                                                  "loc":  {
+                                                                                              "items":  {
+                                                                                                            "anyOf":  [
+                                                                                                                          {
+                                                                                                                              "type":  "string"
+                                                                                                                          },
+                                                                                                                          {
+                                                                                                                              "type":  "integer"
+                                                                                                                          }
+                                                                                                                      ]
+                                                                                                        },
+                                                                                              "type":  "array",
+                                                                                              "title":  "Location"
+                                                                                          },
+                                                                                  "msg":  {
+                                                                                              "type":  "string",
+                                                                                              "title":  "Message"
+                                                                                          },
+                                                                                  "type":  {
+                                                                                               "type":  "string",
+                                                                                               "title":  "Error Type"
+                                                                                           },
+                                                                                  "input":  {
+                                                                                                "title":  "Input"
+                                                                                            },
+                                                                                  "ctx":  {
+                                                                                              "type":  "object",
+                                                                                              "title":  "Context"
+                                                                                          }
+                                                                              },
+                                                               "type":  "object",
+                                                               "required":  [
+                                                                                "loc",
+                                                                                "msg",
+                                                                                "type"
+                                                                            ],
+                                                               "title":  "ValidationError"
+                                                           }
+                                   },
+                       "securitySchemes":  {
+                                               "Bearer Authentication":  {
+                                                                             "type":  "http",
+                                                                             "description":  "Enter your JARVIS API token.",
+                                                                             "scheme":  "bearer"
+                                                                         }
+                                           }
+                   }
+}
