@@ -8,7 +8,7 @@ from app.core.security import verify_token
 from app.services import session as sessions
 from app.services.supabase_client import SupabaseClient, SupabaseError, get_client, get_client_optional
 
-router = APIRouter(prefix="/auth", dependencies=[Depends(verify_token)])
+router = APIRouter(prefix="/auth")
 _EMAIL = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 
 
@@ -61,7 +61,7 @@ def login(body: LoginRequest, client: SupabaseClient = Depends(get_client)) -> d
     return {"status": "ok", "logged_in": True, "user": _user_public(sess.user)}
 
 
-@router.post("/logout")
+@router.post("/logout", dependencies=[Depends(verify_token)])
 def logout(client: SupabaseClient | None = Depends(get_client_optional)) -> dict:
     sess = sessions.current()
     sessions.clear()  # always forget the session locally
@@ -73,7 +73,7 @@ def logout(client: SupabaseClient | None = Depends(get_client_optional)) -> dict
     return {"status": "ok", "logged_in": False}
 
 
-@router.get("/me")
+@router.get("/me", dependencies=[Depends(verify_token)])
 def me() -> dict:
     sess = sessions.current()
     return {
